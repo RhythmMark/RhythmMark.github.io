@@ -62,4 +62,4 @@ default_lang: "en"
 exclude_from_localization: ["javascript", "images", "css"]
 parallel_localization: false
 
-theme: jekyll-theme-time-machine
+theme: jekyll-theme-architect
