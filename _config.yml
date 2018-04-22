@@ -1,63 +1,76 @@
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+# Site
+title:              Moon
+bio:                'Minimal, one column jekyll theme.'
+description:        "Moon is a minimal, one column jekyll theme for your blog."
+reading_time:       true
+words_per_minute:   200
+logo:               'assets/img/logo.png'
+background:         'assets/img/placeholder-big.jpg'
+tiled_bg:           false   # Set this true if you want to tile your background image, otherwise it will be covered
+locale:             en_US
+url:                https://taylantatli.github.io/Moon
 
-# Site settings
+# Jekyll
+permalink:          /:title/
+markdown:           kramdown
+highlighter:        rouge
+kramdown:
+  auto_ids:         true
+  footnote_nr:      1
+  entity_output:    as_char
+  toc_levels:       1..6
+  enable_coderay:   false
+mathjax:            true
+sass:
+  sass_dir:         _sass
+  style:            compressed
 
-title: Console
-email: jaeheelee0113@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  Console theme simplifying Jekyll blog implementation process. Concise and fast theme.
-baseurl: "" # the subpath of your site, e.g. /blog
-production_url: "http://localhost:3000"
-url: http://localhost:3000 # the base hostname & protocol for your site, e.g. http://example.com
-permalink: /posts/:categories/:title
+# Comments
+disqus_shortname:   taylantatli
 
-# Footer social links if not provided then the icon would not be visible
-twitter_username: jaehee0113
-github_username:  jaehee0113
-youtube_username: jaehee0113
-linkedin_username: jaehee0113
+# Social
+# if you don't have any of social below, comment the line.
+#google:
+  #plus:            #username
+  #analytics:
+  #verify:
+  #ad-client:
+  #ad-slot:
+#bing-verify:
+#email:
+twitter:            username
+facebook:           username
+github-url:         username
+#stackoverflow:     123456/username   from a "http://stackoverflow.com/users/123456/username" link
+#linkedin:          username
+#xing:              username
+instagram:          username
+#lastfm:            username
+#tumblr:            username
+#medium:            '@username'
+#pinterest:         username
+#foursquare:        username
+steam:              username
+#dribbble:          username
+#youtube:           username
+#youtube-channel:   channel
+#soundcloud:        username
+#weibo:             username
+#flickr:            username
+#codepen:           username
+#keybase:           username
+#xmpp:              username@server.com
+#hackernews:        username
 
-# Disqus settings (shortname is sufficient)
-disqus_shortname: Philsensus
-
-# txtpen settings (shortname is sufficient)
-txtpen_sitename: 
-
-# Build settings
-markdown: kramdown
+# Gems
 gems:
+  - jekyll-mentions
   - jekyll-feed
-  - jekyll-paginate
-  - jekyll-polyglot
-  - jekyll-seo-tag
-exclude:
-  - package.json
-  - Rakefile
-  - node_modules
-  - Gemfile
-  - console-theme.gemspec
-  - gulpfile.js
-  - assets/js
-  - assets/css
-  - screenshot.png
-  - LICENSE.txt
-  - README.md
+  - jekyll-sitemap
+  - jekyll-gist
 
-# Jekyll paginate settings
-paginate: 5
-paginate_path: "/archive/page:num/"
+jekyll-mentions:
+    base_url: https://github.com
 
-# Related posts settings
-max_related_posts_num: 4
-
-# sass settings (you can turn this on but please run gulp)
-#sass:
-#  sass_dir: _sass
-#  style: compressed
-
-# Jekyll polyglot settings
-languages: ["en"]
-default_lang: "en"
-exclude_from_localization: ["javascript", "images", "css"]
-parallel_localization: false
+# Exclude list
+exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
