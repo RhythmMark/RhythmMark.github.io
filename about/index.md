@@ -1,37 +1,40 @@
 ---
 layout: page
-title: About the Theme
+title: About Me
 tags: [about, Jekyll, theme, moon]
 date: 2016-03-21
 comments: false
 ---
     
-<center><a href="http://taylantatli.github.io/Moon"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
+<center><a href="https://rhythmmark.github.io/"><b>Rhy7hm</b></a> 想工作！想实习！（超大声）</center>
 
-## Features
-* Minimal, you can focus on your content
-* Responsive
-* Disqus integration
-* Syntax highlighting
-* Optional post image
-* Social icons
-* Page for sharing projects
-* Optional background image
-* Simple navigation menu
-* MathJax support
+## First
+开个博客，暴露一下自己有多蠢→ →
 
-## Preview
+## Second
 
 {% capture images %}
-    https://cloud.githubusercontent.com/assets/754514/14509720/61c61058-01d6-11e6-93ab-0918515ecd56.png
-    https://cloud.githubusercontent.com/assets/754514/14509716/61ac6c8e-01d6-11e6-879f-8308883de790.png
+http://chuantu.biz/t6/293/1524425236x-1566660859.jpg
+http://chuantu.biz/t6/293/1524425422x-1566660859.jpg
 {% endcapture %}
-{% include gallery images=images caption="Screenshots of Moon Theme" cols=2 %}
+{% include gallery images=images caption="QWQ" cols=2 %}
 
-See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.
+## Third
 
-## Getting Started
+打CTF的   
+~~正在努力成为专攻签到题的大佬~~
 
-To learn how to install and use this theme check out the [Setup Guide](http://taylantatli.me/Moon/moon-theme/) for more information.
-      
-[Install Moon](https://github.com/TaylanTatli/Moon){: .btn}
+以前的web手  
+~~学了？年总算是不会把sql这三个字母拼错了~~
+
+现在的Crypto手  
+~~所以我们战队老师说密码学是我们战队的一大弱项~~
+
+以后的pwn手  
+~~暂时学会了IDA的打开和关闭~~
+
+我想知道猪要经过多少努力才能成人  
+~~我希望最后我能知道ta经过多少努力可以成神~~
+
+## Fin
+想每一天，在每一个方面，我都越来越好:)
