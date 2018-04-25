@@ -20,7 +20,7 @@ comments: true
 打开就看到一个连接和一个hint，hint说是`CBC字节翻转攻击`。
  ![](http://chuantu.biz/t6/293/1524449476x-1566661211.png)
 
-我们先用SourceLeakHacker扫一下，SourceLeakHacker是一款敏感目录扫描工具，敏感目录扫描是web~~狗~~手的常用姿势之一。
+我们先用SourceLeakHacker扫一下，SourceLeakHacker是一款敏感目录扫描工具，敏感目录扫描是web ~~狗~~ 手的常用姿势之一。
 ![](http://chuantu.biz/t6/293/1524481869x-1566661211.png)
  
 看到那个绿色的200表示能够成功访问，这就是我们扫出来的敏感路径
