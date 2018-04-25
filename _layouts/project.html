@@ -6,6 +6,7 @@ layout: compress
 <!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"><!--<![endif]-->
+
 <head>
     {% include head.html %}
 </head>
@@ -29,6 +30,7 @@ layout: compress
                             <a class="zoombtn" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
                             <p>{{ post.excerpt }}</p>
                             <a href="{{ site.url }}{{ post.url }}" class="btn zoombtn">Read More</a>
+							
                         </li>
                     </ul>
                       {% endif %}
@@ -38,7 +40,9 @@ layout: compress
         </div>
     </header>
     {% include scripts.html %}
+	<script src="http://jerry-cdn.b0.upaiyun.com/hit-kounter/hit-kounter-0.1.1.js"></script>
     <script src="{{ site.url }}/assets/js/wow.min.js"></script>
     <script type="text/javascript">(new WOW).init();</script>
+	 浏览量：<span data-hk-page="current"> - </span>次<span class="pause"> | </span>
 </body>
 </html>

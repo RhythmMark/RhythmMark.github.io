@@ -248,7 +248,7 @@ Ctrl+F搜flag
 
 这里就要用到hint里面提到的CBC字节翻转攻击
 
-攻击的point就在·check_login()·的解密过程里。
+攻击的point就在`check_login()`的解密过程里。
 
 ~~PHP代码审计终于结束，可喜可贺可喜可贺~~
 
