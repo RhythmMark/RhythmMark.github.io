@@ -9,7 +9,7 @@ comments: true
 ---
 
 
-#pwntools使用了解一下
+# pwntools使用了解一下
 
 偶尔密码题会给出个nc，不学点pwntools ~~当然zio、socket之类的也行，不过个人喜欢pwntools多一点~~  ~~pwntools虐我千百遍我待pwntools如初恋是这样的喇~~ 根本活不下去
 
@@ -28,6 +28,7 @@ comments: true
 然后，我大概暂时只会用到这两个模块
 
 **连接**
+
 本地 ：sh = porcess("./level0")
 
 远程：sh = remote("127.0.0.1",10001)
@@ -92,7 +93,9 @@ sh.interactive()  直接进行交互，相当于回到shell的模式，在取得
 ~~然后就gg了~~
 
 在python shell里面它是这样的
+
 ![](http://chuantu.biz/t6/296/1524767856x-1566661211.png)
+
 在脚本里ta出来是这样的
 ![](http://chuantu.biz/t6/296/1524767984x-1566660859.png)
 
@@ -141,15 +144,25 @@ Please send some messages to be encrypted, 'quit' to exit:
 ```
 
 大概就是
+
 S：请输入mission key
+
 C：……
+
 S：请输入ID
+
 C：……
+
 S：密文
+
 S：请输入加密信息
+
 C：……
+
 S：请输入加密信息
+
 C：……
+
 ……
 
 
