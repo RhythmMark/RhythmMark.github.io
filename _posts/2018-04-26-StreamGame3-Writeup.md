@@ -7,7 +7,7 @@ tags: [StreamGame3,流密码, correlation attack,Crypto,CTF,Write up,强网杯]
 feature: https://i2.wp.com/latesthackingnews.com/wp-content/uploads/2016/11/cryptography_word_cloud_l-800x445.png
 comments: true
 ---
-#[复现]强网杯-StreamGame3-Writeup
+# [复现]强网杯-StreamGame3-Writeup
 
 ~~Rhythm终于肯填强网杯StreamGame3的坑了~~
 
@@ -17,7 +17,7 @@ comments: true
 
 [Xp0int Team](http://blog.leanote.com/post/xp0intjnu@gmail.com/66c91498d13b)，[MF(admin)](http://wp.ilucky.xin/archives/173)
 
-然后原题的加密数据文件在[这里](https://github.com/RhythmMark/RhythmMark.github.io)makings文件夹下有
+然后原题的加密数据文件在[这里](https://github.com/RhythmMark/RhythmMark.github.io/blob/master/makings/0)下有
 
 ----
 
@@ -103,7 +103,7 @@ for fi in range(1024):
 ```python
 R1=int(flag[5:11],16)
 R2=int(flag[11:17],16)
-R3=int(flag[17:23],16）
+R3=int(flag[17:23],16)
 ```
 
 这里我们就可以知道flag是十六进制的字符串了~~还爆条毛~~
