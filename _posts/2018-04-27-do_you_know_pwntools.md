@@ -51,7 +51,7 @@ sh.recv(numb = 2048, timeout = dufault)  接受数据，numb指定接收的字�
 
 sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n
 
-sh.recvuntil("Hello,World\n",drop=fasle)  接受数据直到我们设置的标志出现
+sh.recvuntil("Hello,World\n",drop=False)  接受数据直到我们设置的标志出现
 
 sh.recvall()  一直接收直到EOF
 
