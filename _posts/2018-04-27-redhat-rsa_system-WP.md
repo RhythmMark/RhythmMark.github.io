@@ -41,7 +41,9 @@ def pro():
 所以我们直接选择1的话，`flag = unpad(flag)+ raw_input` 其实就是 `flag = origin_flag+ raw_input`
 
 看到这里就想到了
+
 ——**Franklin-Reiter Related Message Attack** ！（超大声）
+
 还有`b00t2root '18`这道题：
 ```
 
