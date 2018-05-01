@@ -11,6 +11,18 @@ comments: true
 
 # pwntools使用了解一下
 
+先贴出最常用的三个：
+
+**sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n**
+
+**sh.recvuntil("balabala",drop=fasle)  接受数据直到balabala**
+
+
+**con.sendlineafter('balabala','1')   接收数据到balabala，并发送'1'**
+
+接下来再慢慢说
+
+
 偶尔密码题会给出个nc，不学点pwntools ~~当然zio、socket之类的也行，不过个人喜欢pwntools多一点~~  ~~pwntools虐我千百遍我待pwntools如初恋是这样的喇~~ 根本活不下去
 
 ~~还记得当年nextrsa解出来一关之后帮我写脚本的队友睡了自己写个sendline一写就错一写就错的惨痛回忆~~
@@ -119,7 +131,10 @@ sh.interactive()  直接进行交互，相当于回到shell的模式，在取得
 
 **sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n**
 
-**sh.recvuntil("balabala",drop=fasle)  接受数据直到我们设置的标志出现**
+**sh.recvuntil("balabala",drop=fasle)  接受数据直到balabala**
+
+
+
 
 一般用上面那个，下面那个用于我们要`提取服务端返回的一些信息`
 
