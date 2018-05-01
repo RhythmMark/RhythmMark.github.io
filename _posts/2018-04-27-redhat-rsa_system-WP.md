@@ -9,7 +9,7 @@ comments: true
 ---
 
 
-#红帽杯 rsa system writeup
+# 红帽杯 rsa system writeup
 
 
 *首先，这道题拿了四……四血（超小声），其中一个脚本跑了才五个小时跑出来，表示很期待其他能做得更快的WP QWQ，这里先分享一下我的做法*
