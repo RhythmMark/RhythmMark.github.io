@@ -14,10 +14,13 @@ comments: true
 
 *首先，这道题拿了四……四血（超小声），其中一个脚本跑了才五个小时跑出来，表示很期待其他能做得更快的WP QWQ，这里先分享一下我的做法*
 
-主要思路：构造padding使两次`要进行rsa加密的明文`m1 和 m2 只有最后一个字符不同 ->通过nc交互得到c1 和 c2 ->使用RSA的`Franklin-Reiter Related Message Attack`  ~~->因为脚本跑出来的明文不知道为什么少了5个字符所以用已有的n,e,c1,m1爆破->~~通过rsa明文和pad()函数 get flag
+主要思路：构造padding使两次`要进行rsa加密的明文`m1 和 m2 只有最后一个字符不同 ->通过nc交互得到c1 和 c2 ->使用RSA的`Franklin-Reiter Related Message Attack`  ~~->因为脚本跑出来的明文不知道为什么少了6个字符所以用已有的n,e,c1,m1爆破->~~通过rsa明文和pad()函数 get flag
+
+#待补充内容：为什么脚本跑出来少6个	2.人家只要一分钟能跑出来的做法 
 
 0x01 About padding
 ---
+
 
 拿到代码（代码扔最后了），粗略一看，嗯首先有个len为38的flag，另这个flag为`origin_flag`，然后然后flag通过pad（）函数，即`flag = pad(origin_flag)`，之后能让你选择：
 
@@ -268,6 +271,48 @@ a0abaabababbbbbbababbabbabaabbbbaababb3ababeabba1abaabebaabaabb}abbababbbbabaabb
 fakeflag = 'abcdefghijklmnopqrstuvwxyz1234567890[]'+'-'*87+'1'+'+'*130
 ```
 pad之后得到的字符串
+
+
+m = pad(origin_flag + our_padding)
+↓
+pad：把pad（str）中str里的字符位置弄乱
+↓
+我们想get flag
+↓
+就要知道flag被pad（）弄乱后在m的哪个位置
+
+我们用：
+
+`fakeflag = 'abcdefghijklmnopqrstuvwxyz1234567890[]'+'-'*87+'1'+'+'*130`
+
+然后
+
+`pad(fkaeflag) = '-j-+--+-+-++++++-+-++-++-+--++++--+-++0-+-+l-++-i-+--+[+--+--++]-++-+-+w++-+--++----++++-v--+++++++a+++k++-f++-g+-5++-pc+++dbt+--+r---+++++++++-++-9++-+++-+3-+--+1-4-++-+-o+y+2+---++-7++++-+-+6++-+h+-+sq--++---++z+-n-+-+++++++--+-+++++-+-+-x-e++-+-+-u--8m1'`
+
+然后使用
+```
+>>> dist = {}
+>>> for i in range(len(pad(fkaeflag) )):
+		if s[i] not in dist.keys():
+			dist[s[i]] = i	
+```
+看看dist是什么
+```
+{'+': 3, '-': 0, '1': 162, '0': 38, '3': 156, '2': 175, '5': 114, '4': 164, '7': 183, '6': 192, '9': 147, '8': 253, '[': 54, ']': 63, 'a': 99, 'c': 119, 'b': 124, 'e': 242, 'd': 123, 'g': 111, 'f': 107, 'i': 48, 'h': 197, 'k': 103, 'j': 1, 'm': 254, 'l': 43, 'o': 171, 'n': 215, 'q': 202, 'p': 118, 's': 201, 'r': 130, 'u': 250, 't': 125, 'w': 71, 'v': 89, 'y': 173, 'x': 240, 'z': 212}
+```
+因为fakeflag的长度是256，所以pad之后出来的字符串不会出现fakeflag字符串以外的字符
+
+所以‘a'只会出现一次，然后dist中'a'对应的是99，也就是fakeflag中的第一个字符'a'，是pad(fakeflag)[99]
+
+我们又知道
+
+m = pad(origin_flag + our_padding)
+
+所以
+
+m[99]就是origin_flag的第一个字符
+
+
 
 ```python 
 >>> s = '-j-+--+-+-++++++-+-++-++-+--++++--+-++0-+-+l-++-i-+--+[+--+--++]-++-+-+w++-+--++----++++-v--+++++++a+++k++-f++-g+-5++-pc+++dbt+--+r---+++++++++-++-9++-+++-+3-+--+1-4-++-+-o+y+2+---++-7++++-+-+6++-+h+-+sq--++---++z+-n-+-+++++++--+-+++++-+-+-x-e++-+-+-u--8m1'
