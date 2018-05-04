@@ -14,25 +14,24 @@ comments: true
 
 *首先，这道题拿了四……四血（超小声），其中一个脚本跑了才五个小时跑出来，这里厚着脸皮也分享一下我的做法*
 
-主要思路：构造padding使两次`要进行rsa加密的明文`m1 和 m2 只有最后一个字符不同 ->通过nc交互得到c1 和 c2 ->使用RSA的`Franklin-Reiter Related Message Attack`  ~~->因为脚本跑出来的明文不知道为什么少了6个字符所以用已有的n,e,c1,m1爆破->~~通过rsa明文和pad()函数 get flag
-
-#待补充内容：为什么脚本跑出来少6个	2.人家只要一分钟能跑出来的做法 
+主要思路：构造padding使两次`要进行rsa加密的明文`m1 和 m2 只有最后一个字符不同 ->通过nc交互得到c1 和 c2 ->使用RSA的`Franklin-Reiter Related Message Attack`  ~~->因为没改别人的脚本跑出来的明文少了6个字符所以用已有的n,e,c1,m1爆破->~~通过rsa明文和pad()函数 get flag
 
 
-# 0x00 dalao的做法
+
+#0x00 dalao的做法
 
 我研究的是[Line](https://blog.l1n3.net/writeup/red_hat_ctf_2018_writeup/)
 博客里面的脚本
 
-利用unpad使加密时明文的未知字符的个数从2到38，因此可以逐位爆破flag……
+~~看了很久终于弄懂了~~
 
-不禁感叹大佬们的智商真是太高了QWQ
+利用unpad使加密时明文的未知字符的个数从2到38，因此可以逐位爆破flag……不禁感叹大佬们的智商真是太高了QWQ
 
 关键在于在unpad函数中的
-
 **return ''.join(ret[0:-ord(ret[-1])])**
+，因此我们可以通过ret[-1]的ascii值来控制未知flag的长度，因为ret[-1]所对应的，是我们发送的padding，而不是我们不可控的flag。
 
-，因此我们可以通过ret[-1]的ascii值来控制未知flag的长度，这个我们可以通过发两次padding来实现，用第一次padding将ret[-1]填充，然后第二次padding为空，但是它会再经过一次unpad，就能达到我们的目的了。
+这个我们可以通过发两次padding来实现，用第一次padding将ret[-1]填充，然后第二次padding为空，但是它会再经过一次unpad，这样upad 出来的flag的长度是我们可控的，然后再经过之后，出来的东西，也就是将要经过RSA加密的明文，就只有256-ord(ret[-1])的长度了，就能达到我们的目的了。
 
 为了更好地解释，我写了个模拟爆破第二个flag字符'a'的流程，并加了点注释，应该更好懂一点。
 
@@ -111,7 +110,6 @@ ppp=[99, 124, 119, 123, 242, 107, 111, 197, 48, 1, 103, 43, 254, 215, 171, 118, 
 #flag对应的位置
 n = 0xBACA954B2835186EEE1DAC2EF38D7E11582127FB9E6107CCAFE854AE311C07ACDE3AAC8F0226E1435D53F03DC9CE6701CF9407C77CA9EE8B5C0DEE300B11DD4D6DC33AC50CA9628A7FB3928943F90738BF6F5EC39F786D1E6AD565EB6E0F1F92ED3227658FDC7C3AE0D4017941E1D5B27DB0F12AE1B54664FD820736235DA626F0D6F97859E5969902088538CF70A0E8B833CE1896AE91FB62852422B8C29941903A6CF4A70DF2ACA1D5161E01CECFE3AD80041B2EE0ACEAA69C793D6DCCC408519A8C718148CF897ACB24FADD8485588B50F39BCC0BBF2BF7AD56A51CB3963F1EB83D2159E715C773A1CB5ACC05B95D2253EEFC3CCC1083A5EF279AF06BB92F
 e = 0x10001
-#flag{116107e92518781a2b64ec2072d3f73e}
  
 def str2int(s):
     return int(s.encode('hex'), 16)
@@ -123,7 +121,7 @@ i = 2
 #s1(chr(256-i)*218)
 rp = chr(256-i)*218
 #254
-#
+
 flag = 'flag{116107e92518781a2b64ec2072d3f73e}'
 flag_len = len(flag)
 assert(flag_len == 38)
@@ -182,7 +180,8 @@ for jj in range(0,256):
 
 
 
-下面是我的做法QWQ
+---
+然后下面是我的做法QWQ
 
 0x01 About padding
 ---
@@ -369,6 +368,7 @@ print flag
 
 ```
 脚本~~跑了五个多小时~~跑出来结果出来少了六个字符
+因为人家原题不同的字符串是六个字符的，我这里才一个，改脚本的时候又好像只改了n，e和c……
 
 只得到
 ```
