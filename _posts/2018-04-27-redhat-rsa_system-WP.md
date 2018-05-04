@@ -19,15 +19,19 @@ comments: true
 #待补充内容：为什么脚本跑出来少6个	2.人家只要一分钟能跑出来的做法 
 
 
-#0x00 dalao的做法
+# 0x00 dalao的做法
 
 我研究的是[Line](https://blog.l1n3.net/writeup/red_hat_ctf_2018_writeup/)
 博客里面的脚本
 
-利用unpad使加密时明文的未知字符的个数从2到38，因此可以逐位爆破flag……不禁感叹大佬们的智商真是太高了QWQ
+利用unpad使加密时明文的未知字符的个数从2到38，因此可以逐位爆破flag……
+
+不禁感叹大佬们的智商真是太高了QWQ
 
 关键在于在unpad函数中的
+
 **return ''.join(ret[0:-ord(ret[-1])])**
+
 ，因此我们可以通过ret[-1]的ascii值来控制未知flag的长度，这个我们可以通过发两次padding来实现，用第一次padding将ret[-1]填充，然后第二次padding为空，但是它会再经过一次unpad，就能达到我们的目的了。
 
 为了更好地解释，我写了个模拟爆破第二个flag字符'a'的流程，并加了点注释，应该更好懂一点。
