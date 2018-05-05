@@ -18,7 +18,7 @@ comments: true
 
 
 
-#0x00 dalao的做法
+# 0x00 dalao的做法
 
 我研究的是[Line](https://blog.l1n3.net/writeup/red_hat_ctf_2018_writeup/)
 博客里面的脚本
