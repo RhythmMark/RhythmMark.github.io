@@ -393,7 +393,7 @@ def guess1():
         #模拟用当前选择的R1出来的密文
         p = correlation(tr, cipher)
         #对比猜测密文和真密文中x1和out的重合率
-        if p > 0.66:
+        if p > 0.68:
             possible = r1
             break
     print 'r1, p:',r1, p
@@ -411,7 +411,7 @@ def guess3():
         #模拟用当前选择的R3出来的密文
         p = correlation(tr, cipher)
         #对比猜测密文和真密文中x1和out的重合率
-        if p > 0.66:
+        if p > 0.68:
             possible = r3
             break
     print 'r3, p:',r3, p
