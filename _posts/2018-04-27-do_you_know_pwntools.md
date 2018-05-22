@@ -15,7 +15,7 @@ comments: true
 
 **sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n**
 
-**sh.recvuntil("balabala",drop=False))  接受数据直到balabala**
+**sh.recvuntil("balabala",drop=False)  接受数据直到balabala**
 
 
 **con.sendlineafter('balabala','1')   接收数据到balabala，并发送'1'**
@@ -131,7 +131,7 @@ sh.interactive()  直接进行交互，相当于回到shell的模式，在取得
 
 **sh.recvline(keepends=True)  接受一行数据，keepends为是否保留行尾的\n**
 
-**sh.recvuntil("balabala",drop=False))  接受数据直到balabala**
+**sh.recvuntil("balabala",drop=False)  接受数据直到balabala**
 
 
 
