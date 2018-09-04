@@ -10,12 +10,12 @@ comments: true
 
 # Stack Smashing Protector (SSP):__fortify_fail ->__fortify_fail_abort 
 
-ctfwikiÉÏµÄÒ»µÀÀıÌâ32C3 CTF smashes
+ctfwikiä¸Šçš„ä¸€é“ä¾‹é¢˜32C3 CTF smashes
 https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others/#stack-smash
 
-Õâ¸ö×ËÊÆºÜÓĞÒâË¼£¬Í¨¹ıcanary±£»¤µÄ±¨´íÀ´leak³öÎÒÃÇÏëÒªµÄĞÅÏ¢¡£
+è¿™ä¸ªå§¿åŠ¿å¾ˆæœ‰æ„æ€ï¼Œé€šè¿‡canaryä¿æŠ¤çš„æŠ¥é”™æ¥leakå‡ºæˆ‘ä»¬æƒ³è¦çš„ä¿¡æ¯ã€‚
 
-Ëü±¨´íÊ±»áµ÷ÓÃÒÔÏÂº¯Êı£º
+å®ƒæŠ¥é”™æ—¶ä¼šè°ƒç”¨ä»¥ä¸‹å‡½æ•°ï¼š
 ```
 void __attribute__ ((noreturn)) __stack_chk_fail (void)
 {
@@ -32,20 +32,20 @@ void __attribute__ ((noreturn)) internal_function __fortify_fail (const char *ms
                     msg, __libc_argv[0] ?: "<unknown>");
 }
 ```
-Ö±½Ó»áÊä³ö´íÎóĞÅÏ¢¡£
+ç›´æ¥ä¼šè¾“å‡ºé”™è¯¯ä¿¡æ¯ã€‚
 
-¾ßÌåµÄÔ­ÀíºÍ²Ù×÷¿ÉÒÔ¿´ctfwiki»òÕßÖ±½ÓËÑ32C3 CTF smashesµÄWP
+å…·ä½“çš„åŸç†å’Œæ“ä½œå¯ä»¥çœ‹ctfwikiæˆ–è€…ç›´æ¥æœ32C3 CTF smashesçš„WP
 
-È»¶øÎÒ¸´ÏÖµÄÊ±ºò·¢ÏÖÔÚ×Ô¼ºµÄĞéÄâ»úÉÏÖ»»áÊä³ö
+ç„¶è€Œæˆ‘å¤ç°çš„æ—¶å€™å‘ç°åœ¨è‡ªå·±çš„è™šæ‹Ÿæœºä¸Šåªä¼šè¾“å‡º
 ![Alt text](http://thyrsi.com/t6/366/1536070637x-1566657657.png)
 
 
-²éÁË×ÊÁÏ·¢ÏÖºÍlibcÓĞ¹Ø£¨£¿£©
+æŸ¥äº†èµ„æ–™å‘ç°å’Œlibcæœ‰å…³ï¼ˆï¼Ÿï¼‰
 
-ÓÃµÄlibc-2.27.so
+ç”¨çš„libc-2.27.so
 ![Alt text](http://thyrsi.com/t6/366/1536070669x-1566657657.png)
 
-Ô­ÒòÊÇÎÒµÄ__stack_chk_failÊÇÕâÑùµÄ£º
+åŸå› æ˜¯æˆ‘çš„__stack_chk_failæ˜¯è¿™æ ·çš„ï¼š
 ```
 gdb-peda$ disassemble  __stack_chk_fail
 Dump of assembler code for function __stack_chk_fail:
@@ -54,11 +54,11 @@ Dump of assembler code for function __stack_chk_fail:
    0x00007ffff7eec45b <+11>:	xor    edi,edi
    0x00007ffff7eec45d <+13>:	call   0x7ffff7eec470 <__GI___fortify_fail_abort>
 ```
-ËüÃ»ÓĞÊ¹ÓÃ__fortify_fail£¬¶øÊÇÊ¹ÓÃÁËfortify_fail_abortÀ´·ÀÖ¹argv [0]µÄĞ¹Â¶¡£
+å®ƒæ²¡æœ‰ä½¿ç”¨__fortify_failï¼Œè€Œæ˜¯ä½¿ç”¨äº†fortify_fail_abortæ¥é˜²æ­¢argv [0]çš„æ³„éœ²ã€‚
 
 
 
-fortify_fail_abortÊÇÕâÑùµÄ
+fortify_fail_abortæ˜¯è¿™æ ·çš„
 ```
 __fortify_fail_abort (_Bool need_backtrace, const char *msg)
 {
@@ -74,10 +74,10 @@ __fortify_fail_abort (_Bool need_backtrace, const char *msg)
 }
 //https://code.woboq.org/userspace/glibc/debug/fortify_fail.c.html#40
 ```
-¿É¼û£¬wihileÑ­»·Àï£¬``__libc_message ``µÄµÚÒ»¸ö²ÎÊı´Ó``2``±ä³ÉÁË
+å¯è§ï¼Œwihileå¾ªç¯é‡Œï¼Œ``__libc_message ``çš„ç¬¬ä¸€ä¸ªå‚æ•°ä»``2``å˜æˆäº†
 ``need_backtrace ? (do_abort | do_backtrace) : do_abort``
 
-ÆäÖĞ``do_abort``ºÍ``do_backtrace``·Ö±ğÊÇ1ºÍ2£¬¶¨ÒåÈçÏÂ
+å…¶ä¸­``do_abort``å’Œ``do_backtrace``åˆ†åˆ«æ˜¯1å’Œ2ï¼Œå®šä¹‰å¦‚ä¸‹
 ```
 enum __libc_message_action
 {
@@ -87,39 +87,39 @@ enum __libc_message_action
 };
 ```
 
-¾ÍÊÇÈ¡ÏûÁËÄ¬ÈÏ»ØËİ->±¨´íĞÅÏ¢ÏÔÊ¾argv [0]ÕâÑù×Ó¡£
+å°±æ˜¯å–æ¶ˆäº†é»˜è®¤å›æº¯->æŠ¥é”™ä¿¡æ¯æ˜¾ç¤ºargv [0]è¿™æ ·å­ã€‚
 
 
 
 
-ÏëÓÃcentos×ö£¬·´ÕıÎÒcentosµÄlibc±È½Ï¡­¡­¹ÅÀÏ
+æƒ³ç”¨centosåšï¼Œåæ­£æˆ‘centosçš„libcæ¯”è¾ƒâ€¦â€¦å¤è€
 
 ![Alt text](http://thyrsi.com/t6/366/1536070693x-1566657657.png)
 
-È·ÊµÒ²ÄÜ¹»leak³ö³ÌĞòÃû£¨£¿£©
+ç¡®å®ä¹Ÿèƒ½å¤Ÿleakå‡ºç¨‹åºåï¼ˆï¼Ÿï¼‰
 
 ![Alt text](http://thyrsi.com/t6/366/1536070722x-1566657657.png)
 
-µ«ÊÇcentosÃ»ÓĞpwntoolsÒ²ÀÁµÃ×°
+ä½†æ˜¯centosæ²¡æœ‰pwntoolsä¹Ÿæ‡’å¾—è£…
 
-Ö±½Óí¡Ô¶³ÌÊÔÊÔºÃÁË
+ç›´æ¥æ€¼è¿œç¨‹è¯•è¯•å¥½äº†
 
-ÏÈÕÒbufµ½argv[0]µÄÆ«ÒÆ£¬Ö±½ÓrÈ»ºóÊäÈë¸öABCÈ»ºóµÚ¶ş´ÎÊäÈëÄÇÀïctrl+CÖÕ¶Ë¿´´ËÊ±µÄÕ»¡£
+å…ˆæ‰¾bufåˆ°argv[0]çš„åç§»ï¼Œç›´æ¥rç„¶åè¾“å…¥ä¸ªABCç„¶åç¬¬äºŒæ¬¡è¾“å…¥é‚£é‡Œctrl+Cç»ˆç«¯çœ‹æ­¤æ—¶çš„æ ˆã€‚
 
 ![Alt text](http://thyrsi.com/t6/366/1536070741x-1566657657.png)
 
 ```
-buf£º0x7fffffffdf60
+bufï¼š0x7fffffffdf60
 argv[0]:0x7fffffffe0a8 --> 0x7fffffffe178 --> 0x7fffffffe463 ("/root/Desktop/wiki/smashes")
 
 hex(0x7fffffffe178 - 0x7fffffffdf60) = 0x218L
 ```
 
-ºÍctfÉÏÃèÊöµÄÏà·û
+å’Œctfä¸Šæè¿°çš„ç›¸ç¬¦
 
-È»ºófind CTF ÕÒµ½flag_addr
+ç„¶åfind CTF æ‰¾åˆ°flag_addr
 
-µÃµ½expÈçÏÂ£º
+å¾—åˆ°expå¦‚ä¸‹ï¼š
 
 ```
 from pwn import *
@@ -142,42 +142,42 @@ io.sendlineafter('flag:','')
 io.interactive()
 ```
 
-Ã»³É¡£
+æ²¡æˆã€‚
 
-È»ºóÕâÀï»¹ÓĞÒ»¸ö¿Ó
+ç„¶åè¿™é‡Œè¿˜æœ‰ä¸€ä¸ªå‘
 
-¡­¡­°¡ÕâÀïÊÇ64Î»µÄ³ÌĞòÒªÓÃp64¶ø²»ÊÇp32£¬×ö32x×öÉµÁË¡£
+â€¦â€¦å•Šè¿™é‡Œæ˜¯64ä½çš„ç¨‹åºè¦ç”¨p64è€Œä¸æ˜¯p32ï¼Œåš32xåšå‚»äº†ã€‚
 
-»¹ÓĞÒ»¸ö¾ÍÊÇ
+è¿˜æœ‰ä¸€ä¸ªå°±æ˜¯
 
 ![Alt text](http://thyrsi.com/t6/366/1536070765x-1566657657.png)
 
 
-È»¶øÓÃµÄÓ¦¸ÃÊÇ``0x400d20``²»È»»áÉÙÒ»¸ö×ÖÄ¸£¨¡££©
+ç„¶è€Œç”¨çš„åº”è¯¥æ˜¯``0x400d20``ä¸ç„¶ä¼šå°‘ä¸€ä¸ªå­—æ¯ï¼ˆã€‚ï¼‰
 
-ËùÒÔ¸ÄÏÂÕâÁ½¸öµØ·½¾Í¿ÉÒÔÁË¡£
+æ‰€ä»¥æ”¹ä¸‹è¿™ä¸¤ä¸ªåœ°æ–¹å°±å¯ä»¥äº†ã€‚
 
-ÒÔÎª»áÓöµ½
+ä»¥ä¸ºä¼šé‡åˆ°
 
-ÉèÖÃ»·¾³±äÁ¿``LIBC_FATAL_STDERR_=1``²ÅÄÜÊµÏÖ½«±ê×¼´íÎóĞÅÏ¢Í¨¹ı¹ÜµÀÊä³öµ½Ô¶³ÌshellÖĞ
+è®¾ç½®ç¯å¢ƒå˜é‡``LIBC_FATAL_STDERR_=1``æ‰èƒ½å®ç°å°†æ ‡å‡†é”™è¯¯ä¿¡æ¯é€šè¿‡ç®¡é“è¾“å‡ºåˆ°è¿œç¨‹shellä¸­
 
-µÄ¿ÓÈ»¶ø²¢Ã»ÓĞ¡£
-Õâ¸ö¿ÓÕâÀïÓĞËµ£º
+çš„å‘ç„¶è€Œå¹¶æ²¡æœ‰ã€‚
+è¿™ä¸ªå‘è¿™é‡Œæœ‰è¯´ï¼š
 https://blog.csdn.net/happyorange2014/article/details/50459201
 
-ÒÔÉÏ
+ä»¥ä¸Š
 
 
 
 
-²Î¿¼£º
+å‚è€ƒï¼š
 
 1.https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/4.12_stack_chk_fail.html
 2.https://qiita.com/sei0o/items/55db337b0829367a2052
 3.http://site.pi3.com.pl/papers/ASSP.pdf
 
 
-¿´µÚÈı¸öÁ´½Ó¿ÉÒÔiÒâË¼ÒâË¼¼ÌĞøÉîÈëÁË½âÒ»ÏÂSSP£¬ÀïÃæ½éÉÜÁË²»ÉÙºÍSSPÏà¹ØµÄÒ»Ğ©¹¥»÷¡£
+çœ‹ç¬¬ä¸‰ä¸ªé“¾æ¥å¯ä»¥iæ„æ€æ„æ€ç»§ç»­æ·±å…¥äº†è§£ä¸€ä¸‹SSPï¼Œé‡Œé¢ä»‹ç»äº†ä¸å°‘å’ŒSSPç›¸å…³çš„ä¸€äº›æ”»å‡»ã€‚
 
 
 
