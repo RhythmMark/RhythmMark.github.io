@@ -2,7 +2,7 @@
 layout: post
 title: "Stack Smashing Protector (SSP):__fortify_fail ->__fortify_fail_abort "
 date: 2018-09-3
-excerpt: "A ton of text to test readability with image feature."
+excerpt: "__stack_chk_fail的前世今生之我为什么复现不了ctfwiki上的smashes"
 tags: [pwn, ctfwiki,SSP,stack,CTF]
 feature: https://i.ytimg.com/vi/uSC3guWOvpk/maxresdefault.jpg
 comments: true
@@ -173,7 +173,9 @@ https://blog.csdn.net/happyorange2014/article/details/50459201
 参考：
 
 1.https://firmianay.gitbooks.io/ctf-all-in-one/content/doc/4.12_stack_chk_fail.html
+
 2.https://qiita.com/sei0o/items/55db337b0829367a2052
+
 3.http://site.pi3.com.pl/papers/ASSP.pdf
 
 
