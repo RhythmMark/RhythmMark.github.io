@@ -120,11 +120,8 @@ global offset table
 ```
 struct link_map
   {
-    /* These first few members are part of the protocol with the debugger.
-       This is the same format used in SVR4.  */
 
-    ElfW(Addr) l_addr;		/* Difference between the address in the ELF
-				   file and the addresses in memory.  */
+    ElfW(Addr) l_addr;		/* Base address shared object is loaded at  */
     char *l_name;		/* Absolute file name object was found in.  */
     ElfW(Dyn) *l_ld;		/* Dynamic section of the shared object.  */
     struct link_map *l_next, *l_prev; /* Chain of loaded objects.  */

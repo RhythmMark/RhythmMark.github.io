@@ -26,6 +26,11 @@ https://blog.csdn.net/stpeace/article/details/47090255
 http://linux.51yip.com/search/strip
 
 
+一个动态连接的ELF文件被strip命令删除符号表后会保留.dynsym，丢弃.symtab，只能看到导入库的符号。
+
+其中..dynsym是Dynamic Symbol Table，即动态符号表，它只保存了与动态链接相关的符号。.symtab 往往保存了所有符号，包括.dynsym中的。
+
+
 **nm** ->读取符号信息
 
 
