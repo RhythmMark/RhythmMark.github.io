@@ -127,7 +127,7 @@ struct link_map
     struct link_map *l_next, *l_prev; /* Chain of loaded objects.  */
   };
 ```
-
+PS：链接器会为``每个共享库``生成``一个`link_map``结构的条目
 
 ``GOT[2]``存放了指向动态连接器``_dl_runtime_resolve()``函数的地址。
 
