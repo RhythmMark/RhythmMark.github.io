@@ -42,7 +42,7 @@ https://docs.oracle.com/cd/E19957-01/806-0641/chapter6-42444/index.html
 ``LOAD:08049F94                 Elf32_Dyn <17h, <80482B0h>> ; DT_JMPREL``
 其中``0x17``是``d_tag``，指DT_JMPREL，决定了：
 80482B0h是``Relocation Table``的起始地址。我们可以看看这个表都有啥：
-![Alt text](./1536436091993.png)
+![Alt text](https://raw.githubusercontent.com/RhythmMark/hello-world/master/pictures/3.png)
 
 该表中有几个``Elf32_Rel``，其结构如下：
 ```
@@ -52,12 +52,12 @@ typedef struct {
 } Elf32_Rel;
 ```
 可以配合gdb服用：
-![Alt text](./1536436170644.png)
+![Alt text](https://raw.githubusercontent.com/RhythmMark/hello-world/master/pictures/4.png)
 前面的是r_offset，是重定位入口的偏移，我们可以看到，
 
 所以read的offset是0x804A0C，alarm的是0x804A10，__libc_start_main的是0x804A14，和.got.plt节中显示的相对应——
 
-![Alt text](./1536436952047.png)
+![Alt text](https://raw.githubusercontent.com/RhythmMark/hello-world/master/pictures/5.png)
 
 
 之前提到过
@@ -81,7 +81,7 @@ GOT是全局偏移表，分.got和``.got.plt``两部分
 
 这个可以直接看符号表验证
 
-![Alt text](./1536437030408.png)
+![Alt text](https://raw.githubusercontent.com/RhythmMark/hello-world/master/pictures/6.png)
 
 
 在使用dlresolve之前，还需要知道_dl_runtime_resolve(link_map, reloc_arg)里调用的``_dl_fixup (struct link_map *l, ElfW(Word) reloc_arg)``的一些细节——
