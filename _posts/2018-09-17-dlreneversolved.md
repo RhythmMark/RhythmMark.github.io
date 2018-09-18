@@ -163,9 +163,9 @@ LOAD:08048298                 dd 0D696910h, 20000h, 46h, 0
 
 
 
-###看例题：
+### 看例题：
 
-####stage1 
+#### stage1 
 
 payload1 -> 
 
@@ -180,7 +180,7 @@ payload2->
 
 执行write，输出'/bin/sh'
 
-####stage2
+#### stage2
 
 stage1中payload2的``write_plt``换成了``plt_0 + write_index_offset``
 
@@ -203,13 +203,13 @@ stage1中payload2的``write_plt``换成了``plt_0 + write_index_offset``
 
 PS：这里的所谓index是该函数的Elf32_Rel（r_offset+r_info）到.rel.plt的偏移
 
-####stage3:
+#### stage3:
 
 把stage2里payload2中，倒数第二个padding里填了个``fake_reloc``
 
 这里的fake_reloc和真正的reloc没什么区别，好吧，没区别，就所在地址不同，内容一样的。脚本里，“执行write”时用到了这个fake_reloc
 
-####stage4：
+#### stage4：
 
 这次伪造了一个``fake_sym``，即于payload2中的倒数第二个padding增加了``'B' * align + fake_sym``，并把``fake_reloc``的``r_info``改成了``(index_dynsym << 8) | 0x7``，即脚本运行中
 
@@ -258,7 +258,7 @@ struct Elf32_Sym
 
 ``index_dynsym = (fake_sym_addr - dynsym) / 0x10``
 
-####stage5
+#### stage5
 
 刚刚伪造的``fake_sym``的st_name指的还是字符表中的位置，这次指向我们伪造的字符串。
 
