@@ -4,7 +4,8 @@
   "description": "RhythmMark.github.io",
   "main": "index.js",
   "dependencies": {
-    "formidable": "^1.2.1"
+    "formidable": "^1.2.1",
+    "jekyll": "^3.0.0-beta1"
   },
   "devDependencies": {},
   "scripts": {
