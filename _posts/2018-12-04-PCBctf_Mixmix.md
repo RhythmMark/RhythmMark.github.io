@@ -4,7 +4,7 @@ title: "鹏城杯"
 date: 2018-12-04
 excerpt: "不学鹏程杯选手叫了，不开心"
 tags: [Crypto,random.getrandbits,RSA-Partial-key exposure Attack,Feistel]
-feature: https://pic1.zhimg.com/v2-64a0963238f3eded5ad5ecf45e7893ff_1200x500.jpg
+feature: http://www.51pptmoban.com/d/file/2017/04/22/17b3559220f03fb0c009f0c21944dd7c.jpg
 comments: true
 ---
 
