@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "【CBC字节翻转】三文鱼都能看懂的bugku-web-login4-WP"
+title: "【CBC字节翻转】bugku-web-login4-WP"
 date: 2018-04-23
 excerpt: "如题"
-tags: [CBC 字节翻转攻击, bugku,web,Crypto,CTF,Write up,三文鱼]
+tags: [CBC 字节翻转攻击,bugku,web,Crypto,CTF,Write up]
 feature: http://www.nsoad.com/upload/20161014/d6804a98376fedd714d6e578aa6c7e14.png
 comments: true
 ---
