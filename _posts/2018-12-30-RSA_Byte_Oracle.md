@@ -4,12 +4,12 @@ title: "hitcon2018-lost-key"
 date: 2018-12-30
 excerpt: "Which make me lose heart?"
 tags: [Crypto,RSA Byte Oracle]
-feature: http://ctf.hitcon.org/img/hitcon.png
+feature: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtw1pTrHm7OLtl5atLXLDHWS2DUGyCn_zowx71zxRyRtqJgBTR
 comments: true
 ---
 
 
-#Lost Key
+# Lost Key
 
 ## 0x01 前期准备
 
