@@ -41,25 +41,45 @@ short for "too long; didn't read"
 加密流程如下：
 
 每次的明文都是两个字节，即16比特
+
 ↓
+
 每个比特重复三次，记为C，其长度为48比特
+
 ``#add_encoding``
+
 ↓
+
 随机生成一个48*48的只有0和1的矩阵，记为G
+
 ``columns = balabala``
+
 ↓
+
 忘了说有一个key，长度是48比特
+
 ``keygen``
+
 ↓
+
 矩阵G和秘钥key相乘
+
 ``y = matrix_vector_multiply(columns, self.key)``
+
 ↓
+
 相乘的结果和明文y异或，此时的结果记为y，长度为48比特
+
 ``y ^= message``
+
 ↓
+
 得到的y，每三个字符，随机选择其中的一个翻转
+
 ``add noise``
+
 ↓
+
 得到密文
 
 ## 0x03 matrix_vector_multiply
