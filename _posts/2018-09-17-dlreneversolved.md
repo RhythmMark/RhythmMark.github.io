@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "ret2dlresolve还没做出来，陷入沉思.jpg"
+title: "ret2dlresolve？"
 date: 2018-09-17
-excerpt: "（我没想到会有人看我的blog+彩蛋有我最喜欢的python"
+excerpt: "今天也是枉顾自己的智商挣扎着学Return-to-dl-resolve的一天：）"
 tags: [dlresolve,__file__,os.path]
 feature: http://bpic.588ku.com/element_origin_min_pic/16/11/03/a2764458a6fc972bd84a63391aab47ae.jpg
 comments: true
@@ -294,9 +294,6 @@ lev12->下篇见
 
 
 
-
-
-
 ---
 彩蛋：
 
@@ -456,8 +453,6 @@ https://www.cnblogs.com/Security-Darren/p/4733368.html
 
 
 
-
-
 ---
 
 参考：
@@ -466,25 +461,6 @@ https://www.cnblogs.com/Security-Darren/p/4733368.html
 
 2.http://pwn4.fun/2016/11/09/Return-to-dl-resolve/
 
-3.
 
-
-
-
-
-
-----
-哔哔几句
-1.羡慕逻辑都比我强的普通人类
-
-2.有人问我普通人类都把
-
-2.之前都用的图片上传，然后听说有人看不了图片（所以为什么会有人看我的blog阿），然后这篇开始就直接把截图扔到自己博客这里了……我应该早就这样做的 -0-
-
-3.然后这样我编辑的时候好像又不能及时看了……想了下还是扔自己的服务器上吧……
-
-4.……那我终于有一天缺钱到服务器都养不起了怎么办？
-
-5.最后我突然想起我能放github上（。）
 
  
