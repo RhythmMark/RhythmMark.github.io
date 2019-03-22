@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "做ret2dlresolve前的准备工作之ELF文件的重定位+ROP寻找gadgets的一个算法"
+title: "ELF文件的重定位+ROP寻找gadgets的一个算法"
 date: 2018-09-5
-excerpt: "又是毫无逻辑可言的一篇blog"
+excerpt: "pwn fail code crash repeat"
 tags: [ELF]
 feature: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_u-n5r3O1MIxFBkyQObKHcXYQhDsnkiUZ29oOJxzhjI9Jm1m
 comments: true
