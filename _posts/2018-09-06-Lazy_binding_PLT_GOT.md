@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "做ret2dlresolve前的准备工作之PLT/GOT/Lazy binding"
+title: "PLT/GOT/Lazy binding"
 date: 2018-09-6
 excerpt: "我们终于知道第一次调用read的时候发生了什么"
 tags: [pwn,ELF,GOT,PLT,ROP]
