@@ -2,7 +2,7 @@
 layout: post
 title: " 我翻译了一篇16页的论文，完成度80%的那种"
 date: 2019-04-02
-excerpt: "DesigningNewOperatingPrimitivestoImprove FuzzingPerformance"
+excerpt: "《Designing New Operating Primitives to Improve Fuzzing Performance》"
 tags: [fuzz,afl,libfuzzer,snapshot,share memory log]
 feature:  http://ccs17.unam.mx/images/logo.png
 comments: true
