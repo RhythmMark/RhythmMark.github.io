@@ -2,7 +2,7 @@
 layout: post
 title: "【一个Crypto手的自我修养】pwntools使用了解一下"
 date: 2018-04-27
-excerpt: "我只是想用来做密码题而已……pwn手？那是以后的事喇"
+excerpt: "听说pwntools用多了，自然就会pwn了（不是"
 tags: [pwntools, python]
 feature: https://warehouse-camo.cmh1.psfhosted.org/16d82a21c9635a10273ddd2595958d6c66216963/68747470733a2f2f6769746875622e636f6d2f47616c6c6f70736c65642f70776e746f6f6c732f626c6f622f737461626c652f646f63732f736f757263652f6c6f676f2e706e673f7261773d74727565
 comments: true
