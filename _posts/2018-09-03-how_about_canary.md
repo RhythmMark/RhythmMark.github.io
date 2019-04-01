@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Stack Smashing Protector (SSP):__fortify_fail ->__fortify_fail_abort "
+title: "来来来，我们来聊聊ctfwiki上的stack-smash "
 date: 2018-09-3
-excerpt: "__stack_chk_fail的前世今生之我为什么复现不了ctfwiki上的smashes"
+excerpt: "我为什么复现不了"
 tags: [pwn, ctfwiki,SSP,stack,CTF]
 feature: https://i.ytimg.com/vi/uSC3guWOvpk/maxresdefault.jpg
 comments: true
@@ -15,7 +15,7 @@ https://ctf-wiki.github.io/ctf-wiki/pwn/stackoverflow/others/#stack-smash
 
 这个姿势很有意思，通过canary保护的报错来leak出我们想要的信息。
 
-它报错时会调用以下函数：
+报错时会调用以下函数：
 ```
 void __attribute__ ((noreturn)) __stack_chk_fail (void)
 {
@@ -88,8 +88,6 @@ enum __libc_message_action
 ```
 
 就是取消了默认回溯->报错信息显示argv [0]这样子。
-
-
 
 
 想用centos做，反正我centos的libc比较……古老
