@@ -2,7 +2,7 @@
 layout: post
 title: "【红帽杯】rsa system writeup"
 date: 2018-05-1
-excerpt: "有生之年能写比赛WP系列"
+excerpt: "以此纪念运气型选手（×）Rhy7hm的第一个四血"
 tags: [RSA,Franklin-Reiter Related Message Attack, Crypto,CTF,红帽杯,redhat]
 feature: http://www.ruanyifeng.com/blogimg/asset/201307/bg2013070301.png
 comments: true
@@ -12,13 +12,9 @@ comments: true
 # 红帽杯 rsa system writeup
 
 
-*首先，这道题拿了四……四血（超小声），其中一个脚本跑了才五个小时跑出来，这里厚着脸皮也分享一下我的做法*
-
-主要思路：构造padding使两次`要进行rsa加密的明文`m1 和 m2 只有最后一个字符不同 ->通过nc交互得到c1 和 c2 ->使用RSA的`Franklin-Reiter Related Message Attack`  ~~->因为没改别人的脚本跑出来的明文少了6个字符所以用已有的n,e,c1,m1爆破->~~通过rsa明文和pad()函数 get flag
-
-
-
 # 0x00 dalao的做法
+
+先研究一下正确解法（因为我的做法应该是……非预期，还慢）
 
 我研究的是[Line](https://blog.l1n3.net/writeup/red_hat_ctf_2018_writeup/)
 博客里面的脚本
@@ -181,7 +177,21 @@ for jj in range(0,256):
 
 
 ---
-然后下面是我的做法QWQ
+然后下面是我的做法
+
+
+
+主要思路：
+
+构造padding使两次`要进行rsa加密的明文`m1 和 m2 只有最后一个字符不同 ->
+
+通过nc交互得到c1 和 c2 ->
+
+使用RSA的`Franklin-Reiter Related Message Attack`  ->
+
+~~因为没改别人的脚本跑出来的明文少了6个字符所以用已有的n,e,c1,m1爆破->~~
+
+通过rsa明文和pad()函数 get flag
 
 0x01 About padding
 ---
