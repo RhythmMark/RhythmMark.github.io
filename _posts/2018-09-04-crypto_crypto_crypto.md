@@ -2,7 +2,7 @@
 layout: post
 title: "Some small pieces of cryptography  "
 date: 2018-09-4
-excerpt: "非常分散，纯属瞎记"
+excerpt: "这篇blog由于过于水，已被屏蔽"
 tags: [Crypto]
 feature: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr_u-n5r3O1MIxFBkyQObKHcXYQhDsnkiUZ29oOJxzhjI9Jm1m
 comments: true
