@@ -2,17 +2,11 @@
 layout: post
 title: "ctfwiki_Crypto_overview之cryptopals"
 date: 2018-09-12
-excerpt: "为什么断更这么久？大概是因为dlresolve喜提rhy7hm狗命了吧"
+excerpt: "做了前三题就跑路了（。）这篇文章由于过于菜也被屏蔽了……"
 tags: [ctfwiki,Crypto,cryptopals]
 feature: https://avatars3.githubusercontent.com/u/29177726?s=400&v=4
 comments: true
 ---
-
----
-mark：
-现代密码学-非对称加密：
-RSA->大整数分解
-ElGamal->离散对数
 
 ---
 
