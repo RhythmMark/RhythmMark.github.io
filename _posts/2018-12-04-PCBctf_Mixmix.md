@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "鹏城杯"
+title: "鹏城杯 Mixmix+Quotes"
 date: 2018-12-04
-excerpt: "不学鹏程杯选手叫了，不开心"
+excerpt: "以此纪念还是运气型选手Rhy7hm的第一个非常水的二血"
 tags: [Crypto,random.getrandbits,RSA-Partial-key exposure Attack,Feistel]
 feature: http://www.51pptmoban.com/d/file/2017/04/22/17b3559220f03fb0c009f0c21944dd7c.jpg
 comments: true
@@ -538,7 +538,6 @@ fout.write(cc+"\n")
 最后，拿了个~~送分题的~~二血，记录一下
 
 ![](https://github.com/RhythmMark/hello-world/blob/master/pictures/22222222.jpg?raw=true)
-
 
 ---
 
