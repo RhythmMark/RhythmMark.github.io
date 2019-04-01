@@ -9,7 +9,7 @@ comments: ture
 <center><a href="https://rhythmmark.github.io/"><b>Rhy7hm</b></a> 最喜欢搬砖了</center>
 
 
-###### ！！！这是一个成熟的博客了
+！！！这是一个成熟的博客了
 
 ##### ！！！会自己写文章了
 
