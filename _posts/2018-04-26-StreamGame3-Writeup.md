@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "[复现]强网杯-StreamGame3-Writeup"
+title: "【复现】强网杯-StreamGame3-Writeup"
 date: 2018-04-26
-excerpt: "流密码的相关攻击了解一下."
+excerpt: "流密码大魔王……"
 tags: [StreamGame3,流密码, correlation attack,Crypto,CTF,Write up,强网杯]
 feature: https://i2.wp.com/latesthackingnews.com/wp-content/uploads/2016/11/cryptography_word_cloud_l-800x445.png
 comments: true
