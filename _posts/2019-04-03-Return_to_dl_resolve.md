@@ -14,4 +14,4 @@ comments: true
 
 注意：full relro 的binary 是不会延迟绑定的……也意味着无法修改got表……
 
-![](https://raw.githubusercontent.com/RhythmMark/RhythmMark.github.io/master/_posts/pictures/ELF_R2dlres.png)
+![](https://raw.githubusercontent.com/RhythmMark/RhythmMark.github.io/master/_posts/pictures/ELF_dlresolve.jpg)
