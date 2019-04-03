@@ -34,7 +34,7 @@ from fractions import Fraction
 连接服务器：
 ```python
 context.log_level = 'debug'
-io = remote("pwn.sixstars.team",23507)
+io = remote("xxx.xxx.xxx",xxxx)
 io.readline()
 en_flag = io.readline()
 en_flag = en_flag[:-1]
