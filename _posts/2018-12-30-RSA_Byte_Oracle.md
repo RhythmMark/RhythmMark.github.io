@@ -21,10 +21,6 @@ comments: true
 
 在这个RSA里，n未知，e未知
 
-这道题在[六星的训练平台](https://ctf.sixstars.team/challenges#Lost%20Key)上有，就很开心
-
-~~日常吹爆六星，可惜不是六星的人……蹭其他战队的训练平台我错了QWQ~~
-
 先写一下准备工作：
 
 复制题目，加上所需的库：
